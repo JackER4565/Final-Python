@@ -1,3 +1,4 @@
+"""
 import django
 django.VERSION
 django-admin startproject Proyecto1
@@ -19,3 +20,4 @@ python manage.py makemigrations
 from MiAplicacion.models import Curso
  curso = Curso(nombre="Python", camada=23800)
 curso.save()
+"""
