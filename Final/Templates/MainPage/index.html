@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon.ico' %}">
 <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>Mundana Template by WowThemesNet</title>
+<title>SITE-NAME Title</title>
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="{% static 'slick/slick.min.css' %}">          <!-- https://kenwheeler.github.io/slick/ -->
 <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}">
 <link rel="stylesheet" href="{% static 'css/templatemo-upright.css' %}">
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
 </head>
 <body>
 <!--------------------------------------
@@ -25,37 +26,28 @@ NAVBAR
 --------------------------------------->
 <nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
 <div class="container">
-	<a class="navbar-brand" href="{% url 'index' %}"><strong>Mundana</strong></a>
+	<a class="navbar-brand" href="{% url 'index' %}"><strong>SITE-NAME</strong></a>
 	<div class="navbar-collapse collapse" id="navbarColor02">
 		<ul class="navbar-nav mr-auto d-flex align-items-center">
 			<li class="nav-item">
-			<a class="nav-link" href="./index.html">Intro <span class="sr-only">(current)</span></a>
+			<a class="nav-link" href="./article.html">Actuales <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" href="./article.html">Culture</a>
+			<a class="nav-link" href="./article.html">Vencidas</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" href="./article.html">Tech</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="./article.html">Politics</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="./article.html">Health</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="./article.html">Collections</a>
+			<a class="nav-link" href="./article.html">FAQ</a>
 			</li>            
 			<li class="nav-item">
-			<a class="nav-link" href="./about.html">About</a>
+			<a class="nav-link" href="./about.html">Acerca De</a>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" href="./docs.html">Template <span class="badge badge-secondary">docs</span></a>
+			<a class="nav-link" href="./docs.html">Crear Cuenta<!-- <span class="badge badge-secondary">docs</span>--></a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto d-flex align-items-center">
 			<li class="nav-item highlight">
-			<a class="nav-link" href="https://www.wowthemes.net/mundana-free-html-bootstrap-template/">Get this Theme</a>
+			<a class="nav-link" onclick="loginfunc()">Login</a>
 			</li>
 		</ul>
 	</div>
@@ -64,9 +56,31 @@ NAVBAR
 <!-- End Navbar -->
     
 <!--------------------------------------
+		LOGIN
+--------------------------------------->
+
+<div class="login-div">
+	<div class="logo"></div>
+	<div class="title">SITE-NAME</div>
+	<div class="sub-title">BETA</div>
+	<div class="fields">
+		<div class="username"><svg class="svg-icon" viewBox="0 0 20 20">
+			<path d="M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z"></path>
+		</svg><input type="username" class="user-input" placeholder="username" /></div>
+		<div class="password"><svg class="svg-icon" viewBox="0 0 20 20">
+			<path d="M17.308,7.564h-1.993c0-2.929-2.385-5.314-5.314-5.314S4.686,4.635,4.686,7.564H2.693c-0.244,0-0.443,0.2-0.443,0.443v9.3c0,0.243,0.199,0.442,0.443,0.442h14.615c0.243,0,0.442-0.199,0.442-0.442v-9.3C17.75,7.764,17.551,7.564,17.308,7.564 M10,3.136c2.442,0,4.43,1.986,4.43,4.428H5.571C5.571,5.122,7.558,3.136,10,3.136 M16.865,16.864H3.136V8.45h13.729V16.864z M10,10.664c-0.854,0-1.55,0.696-1.55,1.551c0,0.699,0.467,1.292,1.107,1.485v0.95c0,0.243,0.2,0.442,0.443,0.442s0.443-0.199,0.443-0.442V13.7c0.64-0.193,1.106-0.786,1.106-1.485C11.55,11.36,10.854,10.664,10,10.664 M10,12.878c-0.366,0-0.664-0.298-0.664-0.663c0-0.366,0.298-0.665,0.664-0.665c0.365,0,0.664,0.299,0.664,0.665C10.664,12.58,10.365,12.878,10,12.878"></path>
+		</svg><input type="password" class="pass-input" placeholder="password" /></div>
+	</div>
+	<button class="signin-button">Login</button> 
+	<div class="link">
+		<a href="#">Recuperar Cuenta</a>
+	</div>
+</div>
+
+<!--------------------------------------
 MAIN
 --------------------------------------->
-    
+
 <div class="container pt-4 pb-4">
 	<div class="row" id="roww"> <!-- IMPORTADO -->
 		<!-- Leftside bar -->
@@ -75,10 +89,7 @@ MAIN
 				<button class="navbar-toggler" type="button" aria-label="Toggle navigation">
 					<i class="fas fa-bars"></i>
 				</button>
-				<div>
-					<div class="tm-brand-box">
-						<h1 class="tm-brand">Upright</h1>
-					</div>                
+				<div>      
 					<ul id="tm-main-nav">
 						<li class="nav-item">                                
 							<a href="#home" class="nav-link current">
@@ -813,6 +824,11 @@ JAVASCRIPTS
 <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script> <!-- https://dimsemenov.com/plugins/magnific-popup/ -->
 <script src="{% static 'slick/slick.min.js' %}"></script>              <!-- https://kenwheeler.github.io/slick/ -->
 <script src="{% static 'js/templatemo-script.js' %}"></script> ;<!--- para las fotos de la galleria -->
+<script type="javascript">
+	loginfunc(){
+	document.getElementsByClassName('login-div')[0].style.display = 'block'
+	}
+</script>
 <!---------
 DEPRECATED
 

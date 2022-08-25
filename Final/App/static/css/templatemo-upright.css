@@ -63,16 +63,17 @@ hr { border-top: 4px solid #CCC; }
 	position: fixed;
 	/*top: 0;
 	bottom: 0;
-	 left: 0;*/
+	 left: 0;
+	 padding-left: 40px;*/
 	z-index: 1000;
-	padding-left: 40px;
-	padding-top: 40px;
-	width: 280px;
+	
+	padding-top: 10px; /*40 og*/
+	width: 200px;  /* 280 og*/
 }
 
 .tm-section-wrap {
-	width: calc(100% - 350px);
-	margin-left: 350px;
+	width: calc(100% - 250px);
+	margin-left: 250px;
 	margin-right: 0;
 	position: relative;
 }
@@ -140,7 +141,7 @@ hr { border-top: 4px solid #CCC; }
 .nav-link {
 	position: relative;
 	color: #006699;
-	font-size: 1.4rem;
+	font-size: 1rem; /* og 1.4*/
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
@@ -148,7 +149,7 @@ hr { border-top: 4px solid #CCC; }
 .triangle-right {
 	position: absolute;
 	top: 9px;
-	left: -40px;
+	left: 0px;  /* og -40 */
 	width: 0;
 	height: 0;
 	border-top: 21px solid transparent;
@@ -162,7 +163,7 @@ hr { border-top: 4px solid #CCC; }
 .nav-link.current {
 	background-color: #F2F2F2;
 	color: #006699;
-	padding-left: 30px;
+	padding-left: 50px; /* og 30 */
 }
 
 .nav-item:hover > .nav-link > .triangle-right,
@@ -172,7 +173,7 @@ hr { border-top: 4px solid #CCC; }
 
 .nav-icon {
 	width: 40px;
-	margin-right: 20px;
+	margin-right: 0px; /* og 20 */
 }
 
 /* Home section */
@@ -646,8 +647,8 @@ select:not([multiple]) {
 
 @media (max-width: 1400px) {
 	.tm-section-wrap {
-		width: calc(100% - 350px);
-		margin-left: 350px;
+		width: calc(100% - 250px);
+		margin-left: 250px;
 	}
 }
 
