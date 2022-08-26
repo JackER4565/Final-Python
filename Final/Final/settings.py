@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Final.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/frondinella/Documents/final python/Final/Templates/'],
+        'DIRS': [BASE_DIR / 'Templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
