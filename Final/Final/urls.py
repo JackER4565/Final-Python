@@ -20,4 +20,10 @@ from App import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('crear_cuenta/', views.crear_cuenta, name='crear_cuenta'),
+    path('actuales/', views.actuales, name='actuales'),
+    path('vencidas/', views.vencidas, name='vencidas'),
+    path('ganadores/', views.ganadores, name='ganadores'),
+    path('FAQ/', views.faq, name='faq'),
+    path('acerca_de/', views.acerca_de, name='acerca_de'),
 ]
