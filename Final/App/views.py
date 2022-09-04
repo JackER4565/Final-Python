@@ -3,24 +3,43 @@ from django.http import HttpResponse
 from django.template import loader
 from App.models import Crear_cuenta
 from django.contrib.auth.hashers import make_password, check_password
+import logging
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 def index(request):
-
     dicctionary = {}
-    plantilla = loader.get_template("MainPage/index_hijo.html")
 
-    documento = plantilla.render(dicctionary)
+    
+    if request.method == 'POST':
+            username = request.POST.get('username-li')
+            encryptedpassword=make_password(request.POST.get('password-li'))
+            
+            print("post index")
+            print(username)
+            print(Crear_cuenta.objects.filter(username=username).exists())
+            if Crear_cuenta.objects.filter(username=username).exists():
+                print("llegue primer if")
+                data = Crear_cuenta.objects.filter(username=username).values('password')
+                print(data)
+                data = str(data)[25:-4]
+                print(data)
+                print(encryptedpassword)
+                print(check_password(data, encryptedpassword))
+                user = Crear_cuenta.objects.get(username=username)
+                print(user)
+                user.check_password(password)
+                # <QuerySet [{'id': 1, 'firstname': 'Emil', 'lastname': 'Refsnes'}]>
+                if check_password(data, encryptedpassword):
+                    print("llegue segundo  if")
+                    dicctionary['rta_login'] = "OK"
+            dicctionary['rta_login'] = "FAIL"
 
-    return HttpResponse(documento)
+    return render(request,"MainPage/index_hijo.html",dicctionary)
 
 def crear_cuenta(request):
 
-    dicctionary = {}
-    plantilla = loader.get_template("MainPage/crear_cuenta.html")
-
-    documento = plantilla.render(dicctionary)
     if request.method == 'POST': 
             username = request.POST.get('username', False)
             if Crear_cuenta.objects.filter(username=username).exists():
@@ -40,19 +59,7 @@ def crear_cuenta(request):
     return render(request,'MainPage/crear_cuenta.html')
 
 
-def login(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        encryptedpassword=make_password(request.POST['password'])
-        print(encryptedpassword)
-        checkpassword=check_password(request.POST['password'], encryptedpassword)
-        print(decryptedpassword)
-        data=Login(email=email, password=encryptedpassword)
 
-        data.save()
-        return HttpResponse('Done')
-    else:
-        return render(request, 'index.html')
 def actuales(request):
 
     dicctionary = {}
