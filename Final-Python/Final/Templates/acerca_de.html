@@ -1,0 +1,87 @@
+{% extends "MainPage\index.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+{% load static %}
+	<!-- Leftside bar -->
+    <div id="tm-sidebar" class="tm-sidebar"> 
+        <nav class="tm-nav">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div>      
+                <ul id="tm-main-nav">
+                    <li class="nav-item">                                
+                        <a href="#home" class="nav-link current">
+                            <div class="triangle-right"></div>
+                            <i class="fas fa-home nav-icon"></i>
+                            Acerca De
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="tm-main">
+                <!-- Contact section -->
+        <div class="tm-section-wrap">
+            <div id="home" class="tm-section">
+                <h2 class="tm-text-primary">Acerca De Mí</h2>
+                <hr class="mb-5">
+                <div class="row">
+                    <div class="col-xl-6 tm-contact-col-l mb-4">
+                            <div class="form-group">
+                                <label type="text" name="name" class="form-control rounded-0">Nombre: Fabrizio Rondinella</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="8" name="message" class="form-control rounded-0" readonly>Estudiante de CoderHouse y Didactico, Empleado de TeleCentro, Jugador competitivo, Pianista, Programador</textarea>
+                            </div>
+
+                    </div>
+                    <div class="col-xl-6 tm-contact-col-r">
+                        <!-- Map -->
+                        <div class="mapouter mb-4">
+                            <div class="gmap_canvas">
+                                <iframe width="100%" height="520" id="gmap_canvas"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13140.454178991786!2d-58.5462005177538!3d-34.57599341969501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb77160243783%3A0x5e21a2d3c0a65957!2sSan%20Mart%C3%ADn%2C%20Provincia%20de%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1ses-419!2sde!4v1662557897653!5m2!1ses-419!2sde"
+                                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                               <!-- <iframe width="100%" height="520" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>-->
+                            </div>
+
+                        </div>
+    
+                        <!-- Address -->
+                        <address class="mb-4">
+                            Buenos Aires, Argentina<br>
+                            Partido de General San Martin
+                        </address>
+    
+                        <!-- Links -->
+                        <ul class="tm-contact-links mb-4">
+                            <li class="mb-2">
+                                <a href="tel:+5491101234567">
+                                    <i class="fas fa-phone mr-2 tm-contact-link-icon"></i>
+                                    Tel: +549-11-0123-4567
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:jacker4565@gmail.com">
+                                    <i class="fas fa-at mr-2 tm-contact-link-icon"></i>
+                                    Email: jacker4565@gmail.com
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="tm-contact-social">
+                            <li><a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://instagram.com" class="tm-social-link"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://youtube.com" class="tm-social-link"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .tm-main -->  
+{% endblock %}

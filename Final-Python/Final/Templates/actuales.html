@@ -1,0 +1,26 @@
+{% extends "MainPage\index.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="row">
+    <div class="card">
+        
+        <div class="card-body">
+            {% if asd %}
+                <ul>
+                {% for item in asd%}
+                    {% if item.imagen %}
+                   <li><img src="{{ item.imagen.url }}" class="card-img-top img-fluid" alt="{{ item.titulo }}"></li>
+                    {% endif %}
+                    <li> {{ item.titulo }} </li>
+                   {% endfor %}
+                </ul>
+            {% endif %}
+            <h1 class="card-title">{{ post.title }}</h1>
+            <h5 class="card-title">Published: {{ post.publish }} by <span class="text-primary">{{ post.author }}</h5>
+            <p class="card-text">{{ post.body }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

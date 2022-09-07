@@ -1,0 +1,52 @@
+{% extends "MainPage\index.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+{% load static %}
+	<!-- Leftside bar -->
+    <div id="tm-sidebar" class="tm-sidebar"> 
+        <nav class="tm-nav">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div>      
+                <ul id="tm-main-nav">
+                    <li class="nav-item">                                
+                        <a href="#home" class="nav-link current">
+                            <div class="triangle-right"></div>
+                            <i class="fas fa-home nav-icon"></i>
+                            Agregar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="tm-main">
+        <div class="tm-section-wrap">
+            <div id="home" class="tm-section">
+                <h2 class="tm-text-primary">Agregar Entrada De Blog</h2>
+                <hr class="mb-5">
+                
+                {% if respuesta_add %}
+				{{respuesta_add}} &ensp;
+                <div class="row">
+                    <div class="card">
+                        <img src="{{ Blog.objects.filter() }}" class="card-img-top img-fluid" alt="{{ post.titulo }}">
+                        <div class="card-body">
+                            <h1 class="card-title">{{ post.titulo }}</h1>
+                            <h5 class="card-title">Published: {{ post.texto_corto }} by <span class="text-primary">{{ post.autor }}</h5>
+                            <p class="card-text">{{ post.texto_largo }}</p>
+                        </div>
+                    </div>
+                </div>
+				{% endif %}
+                    <form action="{% url 'agregar_entrada' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_ul }}
+                        <input type="submit" value="Submit">
+                    </form>
+            </div>
+        </div>
+    </div> <!-- .tm-main -->  
+{% endblock %}
