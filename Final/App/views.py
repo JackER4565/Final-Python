@@ -1,106 +1,104 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from App.models import Crear_cuenta
 from django.contrib.auth.hashers import make_password, check_password
 import logging
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
+def login2(request):
+    auxdict = {}
+    if request.method == 'POST':
+        if request.POST.get('login-hidden') == "login-hidden":
+            username = request.POST.get('username-li')
+            password = request.POST.get('password-li')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+            # A backend authenticated the credentials
+                auxdict['rta_login'] = "OK"
+            else:
+            # No backend authenticated the credentials
+                auxdict['rta_login'] = "FAIL"
+    return auxdict
 
+def logout2(request):
+    logout(request)
+    return redirect('/')
 def index(request):
     dicctionary = {}
-
+    dicctionary.update(login2(request))
+    print(dicctionary)
     
-    if request.method == 'POST':
-            username = request.POST.get('username-li')
-            encryptedpassword=make_password(request.POST.get('password-li'))
-            
-            print("post index")
-            print(username)
-            print(Crear_cuenta.objects.filter(username=username).exists())
-            if Crear_cuenta.objects.filter(username=username).exists():
-                print("llegue primer if")
-                data = Crear_cuenta.objects.filter(username=username).values('password')
-                print(data)
-                data = str(data)[25:-4]
-                print(data)
-                print(encryptedpassword)
-                print(check_password(data, encryptedpassword))
-                user = Crear_cuenta.objects.get(username=username)
-                print(user)
-                user.check_password(password)
-                # <QuerySet [{'id': 1, 'firstname': 'Emil', 'lastname': 'Refsnes'}]>
-                if check_password(data, encryptedpassword):
-                    print("llegue segundo  if")
-                    dicctionary['rta_login'] = "OK"
-            dicctionary['rta_login'] = "FAIL"
-
     return render(request,"MainPage/index_hijo.html",dicctionary)
 
 def crear_cuenta(request):
-
+    dicctionary = {}
+    dicctionary.update(login2(request))
+    print(dicctionary)
     if request.method == 'POST': 
             username = request.POST.get('username', False)
-            if Crear_cuenta.objects.filter(username=username).exists():
+            if User.objects.filter(username=username).exists():
                 respuesta = {"mensaje" : "Ya existe usuario."}
                 return render(request,'MainPage/crear_cuenta.html',respuesta)
             
             password = request.POST.get('password', False)
-            encrypted = make_password(password)
             mail = request.POST.get('mail', False)
-            if Crear_cuenta.objects.filter(mail=mail).exists():
+            if User.objects.filter(email=mail).exists():
                 respuesta = {"mensaje" : "Ya existe correo."}
                 return render(request,'MainPage/crear_cuenta.html',respuesta)
-            createacc = Crear_cuenta (username = username, password = encrypted, mail = mail)
+            createacc =    User.objects.create_user(username, mail, password)
             createacc.save()
             respuesta = {"mensaje" : "Cuenta creada correctamente."}
             return render(request,'MainPage/crear_cuenta.html',respuesta)
-    return render(request,'MainPage/crear_cuenta.html')
+    return render(request,'MainPage/crear_cuenta.html', dicctionary)
 
 
 
 def actuales(request):
 
     dicctionary = {}
-    plantilla = loader.get_template("MainPage/crear_cuenta.html")
-
-    documento = plantilla.render(dicctionary)
-
-    return HttpResponse(documento)
+    rta_login = login2(request)
+    dicctionary['rta_login'] = rta_login
+    
+    
+    return render(request,"MainPage/index_hijo.html",dicctionary)
 
 def vencidas(request):
 
     dicctionary = {}
-    plantilla = loader.get_template("MainPage/crear_cuenta.html")
-
-    documento = plantilla.render(dicctionary)
-
-    return HttpResponse(documento)
+    rta_login = login2(request)
+    dicctionary['rta_login'] = rta_login
+    
+    
+    return render(request,"MainPage/index_hijo.html",dicctionary)
 
 def ganadores(request):
 
     dicctionary = {}
-    plantilla = loader.get_template("MainPage/crear_cuenta.html")
-
-    documento = plantilla.render(dicctionary)
-
-    return HttpResponse(documento)
+    rta_login = login2(request)
+    dicctionary['rta_login'] = rta_login
+    
+    
+    return render(request,"MainPage/index_hijo.html",dicctionary)
 
 def faq(request):
 
     dicctionary = {}
-    plantilla = loader.get_template("MainPage/crear_cuenta.html")
-
-    documento = plantilla.render(dicctionary)
-
-    return HttpResponse(documento)
+    rta_login = login2(request)
+    dicctionary['rta_login'] = rta_login
+    
+    
+    return render(request,"MainPage/index_hijo.html",dicctionary)
 
 def acerca_de(request):
 
     dicctionary = {}
-    plantilla = loader.get_template("MainPage/crear_cuenta.html")
-
-    documento = plantilla.render(dicctionary)
-
-    return HttpResponse(documento)
+    rta_login = login2(request)
+    dicctionary['rta_login'] = rta_login
+    
+    
+    return render(request,"MainPage/index_hijo.html",dicctionary)
