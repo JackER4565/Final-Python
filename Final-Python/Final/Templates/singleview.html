@@ -1,0 +1,59 @@
+{% extends "MainPage\index.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+{% load static %}
+
+        <div id="tm-sidebar" class="tm-sidebar"> 
+            <nav class="tm-nav">
+                <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>      
+                            
+                            <div class="text-left">
+                                <a href="{% url 'actuales' %}" class="btn btn-primary tm-btn-next">Volver</a>
+                            </div> 
+
+                </div>
+            </nav>
+        </div>
+
+
+
+    <div class="tm-main">
+                <!-- Contact section -->
+                {% for item in svobj %}
+ 
+        <div class="tm-section-wrap">
+            <div id="home" class="tm-section">
+                <h2 class="tm-text-primary">{{item.titulo}}</h2>
+                <hr class="mb-5">
+
+                <div class="row">
+                    <div class="col-xl-12 tm-col mb-4">
+                        {% if item.imagen %}
+                        <img src="{{ item.imagen.url }}" class="card-img-top img-fluid" alt="{{ item.subtitulo }}" >
+                        {% endif %}
+                        <div class="tm-about-text">
+                        <p>{{item.subtitulo}}</p>
+                        </div>
+                        <hr class="tm-hr-short mb-5"> 
+                            
+                        <div class="tm-text-container mb-6">
+                            {{item.texto_largo}}
+                        </div>
+
+                        <div class="tm-text-secondary tm-about-subtitle" style="text-align: right;">
+                            <p>
+                                Por: {{item.autor}}, {{item.fecha}}
+                            </p>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div> <!-- .tm-main -->  
+{% endblock %}

@@ -19,9 +19,9 @@ class UserRegisterForm(UserCreationForm):
 
 
 class AgregarBlog(forms.Form):
-    titulo = forms.CharField(label='Título', max_length=20)
-    subtitulo = forms.CharField(label='Subtítulo',max_length=20)
-    texto_corto = forms.CharField(label="Texto Corto", max_length=40)
-    texto_largo = forms.CharField(label="Texto largo", max_length=255)
-    autor = forms.CharField(label="Autor", max_length=40)
-    imagen = forms.ImageField(label="Imagen")
+    titulo = forms.CharField(		label='Título     ', max_length=20)
+    subtitulo = forms.CharField(	label='Subtítulo  ',max_length=20)
+    texto_corto = forms.CharField(	label="Texto Corto", max_length=40)
+    texto_largo = forms.CharField(	label="Texto Largo", widget=forms.Textarea)
+    autor = forms.CharField(		label="Autor      ", max_length=40)
+    imagen = forms.ImageField(		label="Imagen     ")

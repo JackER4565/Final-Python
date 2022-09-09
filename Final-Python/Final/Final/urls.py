@@ -27,6 +27,7 @@ urlpatterns = [
     #path('', views.logout2, name="logout"),
     path('crear_cuenta/', views.crear_cuenta, name='crear_cuenta'),
     path('actuales/', views.actuales, name='actuales'),
+    path('single_view/<string>', views.single_view, name="single_view"),
     path('vencidas/', views.vencidas, name='vencidas'),
     path('ganadores/', views.ganadores, name='ganadores'),
     path('FAQ/', views.faq, name='faq'), 

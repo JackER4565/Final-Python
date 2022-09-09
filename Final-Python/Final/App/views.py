@@ -5,6 +5,8 @@ from App.models import Blog
 from django.contrib.auth.models import User
 from .forms import AgregarBlog
 from django.contrib.auth import login, authenticate
+import random
+from pathlib import Path
 
 # Create your views here.
 def login2(request):
@@ -61,6 +63,9 @@ def agregar_entrada(request):
         
         form = AgregarBlog(request.POST, request.FILES)
         if form.is_valid():
+            lines = open(Path(__file__).resolve().parent / 'static/facs.txt').read().splitlines()
+            myline =random.choice(lines)
+            icono = myline
             titulo = form.cleaned_data.get("titulo")
             subtitulo = form.cleaned_data.get("subtitulo")
             texto_corto = form.cleaned_data.get("texto_corto")
@@ -68,8 +73,8 @@ def agregar_entrada(request):
             autor = form.cleaned_data.get("autor")
             activo = 1
             imagen = form.cleaned_data.get("imagen")
-            print(imagen)
             obj = Blog.objects.create(
+                icono = icono,
                 titulo = titulo,
                 imagen = imagen,
                 subtitulo = subtitulo,
@@ -79,7 +84,6 @@ def agregar_entrada(request):
                 activo = activo)
             
             obj.save()
-            print(obj)
             dicctionary['respuesta_add'] = "Agregado correctamente"
     else:
         form = AgregarBlog()
@@ -90,11 +94,16 @@ def agregar_entrada(request):
 def actuales(request):
 
     dicctionary = {}    
-    asd = Blog.objects.all()
-    print(asd)
-    dicctionary["asd"] = asd
+    bobjects = Blog.objects.all()
+    dicctionary["bobjects"] = bobjects
     return render(request,"actuales.html",dicctionary)
 
+def single_view(request, string):
+    dicctionary = {}
+    bobjects = Blog.objects.filter(id=string)
+    dicctionary["svobj"] = bobjects
+
+    return render(request, "singleview.html", dicctionary)
 def vencidas(request):
 
     dicctionary = {}
