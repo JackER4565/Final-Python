@@ -20,6 +20,7 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -35,7 +36,7 @@ urlpatterns = [
     #path("accounts/login/", name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.login2, name="login"),
-    path('agregar_entrada/', views.agregar_entrada, name="agregar_entrada"),
+    path('agregar_entrada/', views.agregar_entrada, name="agregar_entrada")
 ]
 
 # add this lines

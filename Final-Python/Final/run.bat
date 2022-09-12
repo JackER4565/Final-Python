@@ -1,1 +1,1 @@
-cmd.exe /c python manage.py runserver
+cmd.exe /c python manage.py runserver --insecure

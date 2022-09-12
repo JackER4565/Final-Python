@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.forms.fields import EmailField  
 from django.forms.forms import Form  
 
-class UserRegisterForm(UserCreationForm):
+'''class UserRegisterForm(UserCreationForm):
 	email = forms.EmailField()
 	username = forms.CharField(label="Usuario")
 	password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
@@ -15,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
 		model = User
 		fields =['username', 'email', 'password1', 'password2']
 		help_texts = {k:"" for k in fields}
-
+'''
 
 
 class AgregarBlog(forms.Form):
